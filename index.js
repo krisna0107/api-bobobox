@@ -4,6 +4,9 @@ import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import database from './config/database.js'
 
+import reservationsRouter from './routes/reservation.route.js'
+import roomsRouter from './routes/room.route.js'
+
 const app = express()
 dotenv.config()
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
@@ -19,6 +22,10 @@ try {
     console.error('Unable to connect to the database:', error);
 }
 
-app.use('*', (req, res) => {
+
+app.use('/reservations', reservationsRouter)
+app.use('/rooms', roomsRouter)
+
+app.use('/', (req, res) => {
     res.status(404).send('Sorry, cant find that');
 })

@@ -1,5 +1,7 @@
 import { DataTypes } from "sequelize"
 import database from "../config/database.js"
+import Hotel from "./hotel.model.js";
+import RoomType from "./roomType.model.js";
 
 const Room = database.define('room', {
     id: {
@@ -43,7 +45,18 @@ const Room = database.define('room', {
         }
     },
 }, {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
+
+Room.belongsTo(Hotel, {
+    foreignKey: 'hotel_id',
+    constraints: false
+});
+
+Room.belongsTo(RoomType, {
+    foreignKey: 'room_type_id',
+    constraints: false
+});
 
 export default Room

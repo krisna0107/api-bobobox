@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize"
 import database from "../config/database.js"
+import Hotel from "./hotel.model.js"
 
 const Reservation = database.define('reservation', {
     id: {
@@ -52,7 +53,13 @@ const Reservation = database.define('reservation', {
         }
     }
 }, {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
+
+Reservation.belongsTo(Hotel, {
+    foreignKey: 'hotel_id',
+    constraints: false
+});
 
 export default Reservation

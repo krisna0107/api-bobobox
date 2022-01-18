@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize"
 import database from "../config/database.js"
 
+
 const Hotel = database.define('hotel', {
     id: {
         type: DataTypes.INTEGER,
@@ -25,7 +26,8 @@ const Hotel = database.define('hotel', {
         }
     }
 }, {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
 
 export default Hotel

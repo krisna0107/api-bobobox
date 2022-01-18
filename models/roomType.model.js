@@ -1,5 +1,7 @@
 import { DataTypes } from "sequelize"
 import database from "../config/database.js"
+import Price from "./price.model.js";
+import Room from "./room.model.js";
 
 const RoomType = database.define('room_type', {
     id: {
@@ -16,7 +18,14 @@ const RoomType = database.define('room_type', {
         }
     }
 }, {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
 })
+
+RoomType.hasMany(Price, {
+    foreignKey: 'room_type_id',
+    constraints: false,
+    as: 'price'
+});
 
 export default RoomType
