@@ -48,11 +48,11 @@ export const addPromoReservation = async (req, res) => {
         const syncPromo = await getPromoByVOC(req.body.voucher, dateNow, req.body.user_id)
         if (syncPromo == false) {
             return res.status(404).jsonp({ message: "Promo Not Found / Expired!" })
-        }else if(syncPromo == "limit-day"){
+        } else if (syncPromo == "limit-day") {
             return res.status(404).jsonp({ message: "Promo limit per day!" })
-        }else if(syncPromo == "limit-quota"){
+        } else if (syncPromo == "limit-quota") {
             return res.status(404).jsonp({ message: "Promo end!" })
-        }else if(syncPromo == "used"){
+        } else if (syncPromo == "used") {
             return res.status(404).jsonp({ message: "This promo has been claimed!" })
         } else {
             const diffDays = Math.ceil(Math.abs(new Date(reservation.checkin_date) - new Date(reservation.checkout_date)) / (1000 * 60 * 60 * 24));

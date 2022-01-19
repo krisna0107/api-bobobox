@@ -5,7 +5,7 @@ import { getHistoryPromoByUserIDAndPromoID } from "./historyPromo.controller.js"
 export const getPromoByVOC = async (voc, dateNow, user_id) => {
     try {
         const promo = await Promo.findOne({
-            where:{
+            where: {
                 voucher: voc,
                 date_start: {
                     [Op.lte]: dateNow
@@ -16,15 +16,15 @@ export const getPromoByVOC = async (voc, dateNow, user_id) => {
             }
         })
 
-        if(!promo) {
+        if (!promo) {
             return false
         } else {
             const responseHistory = await getHistoryPromoByUserIDAndPromoID(promo, user_id)
-            if (responseHistory == false) 
+            if (responseHistory == false)
                 return 'used'
-            else if (responseHistory == "limit-day") 
+            else if (responseHistory == "limit-day")
                 return responseHistory
-            else if (responseHistory == "limit-quota") 
+            else if (responseHistory == "limit-quota")
                 return responseHistory
             else
                 return promo
