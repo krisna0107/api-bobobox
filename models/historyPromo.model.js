@@ -1,35 +1,27 @@
 import { DataTypes } from "sequelize"
 import database from "../config/database.js"
 
-const Price = database.define('price', {
+
+const HistoryPromo = database.define('history_promo', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true
     },
-    date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        validate: {
-            notNull: {
-                msg: 'Please enter date'
-            }
-        }
-    },
-    room_type_id: {
+    promo_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'Please enter room_type_id'
+                msg: 'Please enter promo_id'
             }
         }
     },
-    price: {
-        type: DataTypes.BIGINT,
+    user_id: {
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'Please enter price'
+                msg: 'Please enter user_id'
             }
         }
     }
@@ -38,4 +30,4 @@ const Price = database.define('price', {
     timestamps: false
 })
 
-export default Price
+export default HistoryPromo

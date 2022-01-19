@@ -6,6 +6,7 @@ import database from './config/database.js'
 
 import reservationsRouter from './routes/reservation.route.js'
 import roomsRouter from './routes/room.route.js'
+import promosRouter from './routes/promo.route.js'
 
 const app = express()
 dotenv.config()
@@ -25,6 +26,7 @@ try {
 
 app.use('/reservations', reservationsRouter)
 app.use('/rooms', roomsRouter)
+app.use('/promos', promosRouter)
 
 app.use('/', (req, res) => {
     res.status(404).send('Sorry, cant find that');

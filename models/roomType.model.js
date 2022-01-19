@@ -1,7 +1,6 @@
 import { DataTypes } from "sequelize"
 import database from "../config/database.js"
-import Price from "./price.model.js";
-import Room from "./room.model.js";
+import Price from "./price.model.js"
 
 const RoomType = database.define('room_type', {
     id: {
@@ -26,6 +25,11 @@ RoomType.hasMany(Price, {
     foreignKey: 'room_type_id',
     constraints: false,
     as: 'price'
+});
+
+Price.belongsTo(RoomType, {
+    foreignKey: 'room_type_id',
+    constraints: false
 });
 
 export default RoomType
