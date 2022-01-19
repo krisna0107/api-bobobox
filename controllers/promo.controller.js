@@ -1,6 +1,40 @@
 import Promo from "../models/promo.model.js"
 import { Op } from 'sequelize';
 import { getHistoryPromoByUserIDAndPromoID } from "./historyPromo.controller.js";
+import { paginationTransform } from "../transformers/paginationCollection.transformers.js";
+
+export const getPromoList = async (req, res) => {
+    try {
+        const dateNow = new Date()
+        const pageAsNumber = Number.parseInt(req.query.page)
+        const sizeAsNumber = Number.parseInt(req.query.size)
+
+        let page = 0;
+        if (!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
+            page = pageAsNumber;
+        }
+
+        let size = 10;
+        if (!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber < 10) {
+            size = sizeAsNumber;
+        }
+        const promo = await Promo.findAndCountAll({
+            where: {
+                date_start: {
+                    [Op.lte]: dateNow
+                },
+                date_end: {
+                    [Op.gte]: dateNow
+                }
+            },
+            limit: size,
+            offset: page * size,
+        })
+        res.status(200).send(paginationTransform(size, promo))
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 export const getPromoByVOC = async (voc, dateNow, user_id) => {
     try {

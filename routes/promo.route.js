@@ -1,8 +1,8 @@
 import express from "express"
-import { getPromoByVOC } from "../controllers/promo.controller.js"
+import { getPromoList } from "../controllers/promo.controller.js"
 
 const router = express.Router()
 
-router.post('/claim', getPromoByVOC)
+router.get('/', getPromoList)
 
 export default router

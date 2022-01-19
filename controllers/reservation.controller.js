@@ -69,6 +69,10 @@ export const addPromoReservation = async (req, res) => {
                 const percent = tp * (syncPromo.reward / 100)
                 total = tp - percent
             }
+
+            if (syncPromo.type == 'currency') {
+                total = tp - syncPromo.reward
+            }
             await Reservation.update({
                 promo_id: syncPromo.id,
                 total_price: total
