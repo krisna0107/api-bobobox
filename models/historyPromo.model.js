@@ -24,7 +24,16 @@ const HistoryPromo = database.define('history_promo', {
                 msg: 'Please enter user_id'
             }
         }
-    }
+    },
+    date: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+        validate: {
+            notNull: {
+                msg: 'Please enter date'
+            }
+        }
+    },
 }, {
     freezeTableName: true,
     timestamps: false
