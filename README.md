@@ -4,9 +4,10 @@
  List API : https://documenter.getpostman.com/view/7166693/UVXnHa16
  
  <br />
-Terdapat 2 Fungsi utama yaitu pencarian Room dan penukaran promo
+Terdapat 2 Fungsi utama yaitu pencarian Room dan penukaran promo <br />
 ## Pencarian Room
 [https://github.com/krisna0107/api-bobobox/blob/0f3c0f6e4c6e72444a132c18f359651f334c7dd0/controllers/room.controller.js#L7]getRoomAvailability Fungsi ini akan melakukan query pada table Room, RoomType dan Price dan akan menghasilkan sebuah JSON Room yang bersatatus avaible <br />
+
 ```json
 {
     "room_qty": "1",
