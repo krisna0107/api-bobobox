@@ -5,6 +5,7 @@
  
  <br />
 Terdapat 2 Fungsi utama yaitu pencarian Room dan penukaran promo <br />
+
 ## Pencarian Room
 [getRoomAvailability](https://github.com/krisna0107/api-bobobox/blob/0f3c0f6e4c6e72444a132c18f359651f334c7dd0/controllers/room.controller.js#L7) Fungsi ini akan melakukan query pada table Room, RoomType dan Price dan akan menghasilkan sebuah JSON Room yang bersatatus avaible <br />
 
