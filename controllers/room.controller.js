@@ -45,7 +45,7 @@ export const getRoomAvailability = async (req, res, next) => {
             room_type_id: req.query.room_type_id,
             checkin_date: req.query.checkin_date,
             checkout_date: req.query.checkout_date,
-            total_price: BigInt(price.price) * req.query.room_qty * diffDays,
+            total_price: price.price * req.query.room_qty * diffDays,
             available_room: roomCollection(room),
         })
     } catch (error) {
