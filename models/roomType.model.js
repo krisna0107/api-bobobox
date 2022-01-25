@@ -27,9 +27,9 @@ RoomType.hasMany(Price, {
     as: 'price'
 });
 
-// Price.belongsTo(RoomType, {
-//     foreignKey: 'room_type_id',
-//     constraints: false
-// });
+Price.belongsTo(RoomType, {
+    foreignKey: 'room_type_id',
+    constraints: false
+});
 
 export default RoomType

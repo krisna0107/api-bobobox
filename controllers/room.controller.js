@@ -25,7 +25,7 @@ export const getRoomAvailability = async (req, res) => {
                         model: Price,
                         as: 'price',
                         attributes: ["date", "price"],
-                        required: true,
+                        required: false,
                         where: {
                             date: {
                                 [Op.between]: [req.query.checkin_date, req.query.checkout_date]
@@ -39,7 +39,7 @@ export const getRoomAvailability = async (req, res) => {
                 room_type_id: req.query.room_type_id
             },
         })
-        console.log(price)
+        
         res.status(200).jsonp({
             room_qty: req.query.room_qty,
             room_type_id: req.query.room_type_id,
