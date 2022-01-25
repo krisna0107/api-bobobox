@@ -1,6 +1,6 @@
 FROM node:alphine
 
-WORKDIR /app
+WORKDIR /api-bobobox
 
 COPY package.json package-lock.json ./
 
