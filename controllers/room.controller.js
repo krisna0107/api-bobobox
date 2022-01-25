@@ -4,7 +4,7 @@ import Price from '../models/price.model.js';
 import { roomCollection } from '../transformers/roomCollection.transformers.js'
 import { Op } from 'sequelize';
 
-export const getRoomAvailability = async (req, res, next) => {
+export const getRoomAvailability = async (req, res) => {
     if (req.query.room_qty == null || req.query.room_type_id == null || req.query.checkin_date == null || req.query.checkout_date == null)
         return res.status(400).jsonp({ "error": 400, message: "Bad Request" })
     try {
