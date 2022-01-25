@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: bobobox
-        image: gcr.io/fast-audio-337101/bobobox:v1.0.1
+        image: gcr.io/fast-audio-337101/bobobox:v1.0.2
         ports:
         - containerPort: 3000
         env:

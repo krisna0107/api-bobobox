@@ -7,7 +7,7 @@ const Price = database.define('price', {
         primaryKey: true
     },
     date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         validate: {
             notNull: {

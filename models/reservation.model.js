@@ -45,7 +45,7 @@ const Reservation = database.define('reservation', {
         }
     },
     checkin_date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         validate: {
             notNull: {
@@ -54,7 +54,7 @@ const Reservation = database.define('reservation', {
         }
     },
     checkout_date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         validate: {
             notNull: {

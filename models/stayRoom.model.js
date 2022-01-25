@@ -27,7 +27,7 @@ const StayRoom = database.define('stay_room', {
         }
     },
     date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         validate: {
             notNull: {
