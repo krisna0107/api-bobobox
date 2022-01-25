@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-bobobox-deployment
+  name: bobobox-deployment
 spec:
   selector:
     matchLabels:
-      app: api-bobobox
+      app: bobobox
   replicas: 1
   template:
     metadata:
       labels:
-        app: api-bobobox
+        app: bobobox
         env: development
     spec:
       containers:
-      - name: api-bobobox
-        image: gcr.io/fast-audio-337101/api-bobobox:v1.1.1
+      - name: bobobox
+        image: gcr.io/fast-audio-337101/bobobox:v1.0.0
         ports:
         - containerPort: 3000
         env:
@@ -29,7 +29,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: api-bobobox-service
+  name: bobobox-service
 spec:
   type: LoadBalancer
   ports:
@@ -37,4 +37,4 @@ spec:
     targetPort: 3000
     protocol: TCP
   selector:
-    app: api-bobobox
+    app: bobobox

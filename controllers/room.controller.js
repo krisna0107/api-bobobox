@@ -9,12 +9,11 @@ export const getRoomAvailability = async (req, res) => {
         return res.status(400).jsonp({ "error": 400, message: "Bad Request" })
     try {
         const diffDays = Math.ceil(Math.abs(new Date(req.query.checkin_date) - new Date(req.query.checkout_date)) / (1000 * 60 * 60 * 24));
-        const price = await Price.findAll({
+        const price = await Price.findOne({
             where: {
                 room_type_id: req.query.room_type_id,
                 date: req.query.checkin_date
-            },
-            limit: 1
+            }
         })
 
         const room = await Room.findAll({
@@ -46,7 +45,7 @@ export const getRoomAvailability = async (req, res) => {
             room_type_id: req.query.room_type_id,
             checkin_date: req.query.checkin_date,
             checkout_date: req.query.checkout_date,
-            total_price: price[0].price * req.query.room_qty * diffDays,
+            total_price: total_price.price * req.query.room_qty * diffDays,
             available_room: roomCollection(room),
         })
     } catch (error) {
