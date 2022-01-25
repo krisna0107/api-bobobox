@@ -39,7 +39,7 @@ export const getRoomAvailability = async (req, res, next) => {
                 room_type_id: req.query.room_type_id
             },
         })
-        console.log(price.price)
+        console.log(price)
         res.status(200).jsonp({
             room_qty: req.query.room_qty,
             room_type_id: req.query.room_type_id,
